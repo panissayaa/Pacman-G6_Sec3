@@ -49,8 +49,12 @@ public class PacManUiBuilder {
      */
     private ScoreFormatter scoreFormatter = null;
 
+    public int level;
+
+
     /**
      * Creates a new Pac-Man UI builder without any mapped keys or buttons.
+     *
      */
     public PacManUiBuilder() {
         this.defaultButtons = false;
@@ -65,13 +69,13 @@ public class PacManUiBuilder {
      *            The game to build the UI for.
      * @return A new Pac-Man UI with the set keys and buttons.
      */
-    public PacManUI build(final Game game) {
+    public PacManUI build(final Game game,int level) {
         assert game != null;
 
         if (defaultButtons) {
             addStartButton(game);
             addStopButton(game);
-            addHomeButton(game);
+            //addHomeButton(game);
             addRestartButton(game);
             addExitButton(game);
 
@@ -79,11 +83,11 @@ public class PacManUiBuilder {
         return new PacManUI(game, buttons, keyMappings, scoreFormatter);
     }
 
-    private void addHomeButton(Game game) {
+    /*private void addHomeButton(Game game) {
         assert game != null;
 
         buttons.put(HOME_CAPTION, game::home);
-    }
+    }*/
 
     private void addRestartButton(Game game) {
         assert game != null;
@@ -104,6 +108,7 @@ public class PacManUiBuilder {
      * @param game
      *            The game to stop.
      */
+
     private void addStopButton(final Game game) {
         assert game != null;
 
@@ -166,9 +171,10 @@ public class PacManUiBuilder {
      */
     public PacManUiBuilder withDefaultButtons() {
         defaultButtons = true;
+        buttons.put(RESTART_CAPTION, null);
         buttons.put(START_CAPTION, null);
         buttons.put(STOP_CAPTION, null);
-        buttons.put(HOME_CAPTION, null);
+
         return this;
     }
 
@@ -184,4 +190,6 @@ public class PacManUiBuilder {
         this.scoreFormatter = scoreFormatter;
         return this;
     }
+
+
 }

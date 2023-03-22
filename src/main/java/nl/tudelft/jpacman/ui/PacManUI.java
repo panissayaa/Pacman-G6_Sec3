@@ -115,4 +115,14 @@ public class PacManUI extends JFrame {
         boardPanel.repaint();
         scorePanel.refresh();
     }
+
+    public int currentMap;
+
+    public void setTheme(int theme) {
+        this.currentMap = theme;
+    };
+
+    public int getTheme() {
+        return currentMap;
+    }
 }

@@ -9,8 +9,11 @@ import nl.tudelft.jpacman.level.Level.LevelObserver;
 import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.points.PointCalculator;
 import nl.tudelft.jpacman.ui.GameOver;
-import nl.tudelft.jpacman.ui.HomePage;
-import nl.tudelft.jpacman.ui.ThemeSelector;
+import nl.tudelft.jpacman.ui.GameWin;
+import nl.tudelft.jpacman.ui.Home;
+import nl.tudelft.jpacman.ui.Theme;
+
+import static nl.tudelft.jpacman.Launcher.pacManUI;
 
 /**
  * A basic implementation of a Pac-Man game.
@@ -80,21 +83,14 @@ public abstract class Game implements LevelObserver {
     }
 
     public void restart() {
-        synchronized (progressLock) {
-            stop();
-            Launcher.pacManUI.dispose();
-            new Launcher().launch();
+        if (pacManUI != null) {
+            Launcher.setVisible(false);
         }
-
+        Launcher.dispose();
+        Launcher.setVisible(false);
+        new Theme().setVisible(true);
     }
 
-    public void home() {
-        synchronized (progressLock) {
-            stop();
-            Launcher.pacManUI.dispose();
-            new HomePage();
-        }
-    }
     public void exit() {
         synchronized (progressLock) {
 
@@ -139,12 +135,14 @@ public abstract class Game implements LevelObserver {
     @Override
     public void levelWon() {
         stop();
+        pacManUI.dispose();
+        new GameWin();
     }
 
     @Override
     public void levelLost() {
         stop();
-        Launcher.pacManUI.dispose();
+        pacManUI.dispose();
         new GameOver();
     }
 }

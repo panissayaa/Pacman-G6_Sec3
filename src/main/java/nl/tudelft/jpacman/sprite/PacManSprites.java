@@ -7,7 +7,7 @@ import java.util.Map;
 import nl.tudelft.jpacman.PacmanConfigurationException;
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.npc.ghost.GhostColor;
-import nl.tudelft.jpacman.ui.ThemeSelector;
+import nl.tudelft.jpacman.ui.Theme;
 /**
  * Sprite Store containing the classic Pac-Man sprites.
  *
@@ -16,7 +16,7 @@ import nl.tudelft.jpacman.ui.ThemeSelector;
 public class PacManSprites extends SpriteStore {
 
 
-    ThemeSelector themeSelector;
+    Theme themeSelector;
 
     /**
      * The sprite files are vertically stacked series for each direction, this
@@ -59,25 +59,21 @@ public class PacManSprites extends SpriteStore {
      */
     public Map<Direction, Sprite> getPacmanSprites() {
         if(themeSelector.getTheme_() == 1){
-            return directionSprite("/theme1/pacman.png", PACMAN_ANIMATION_FRAMES);
+            return directionSprite("/Sprite/pacman1.png", PACMAN_ANIMATION_FRAMES);
         }
         if(themeSelector.getTheme_() == 2){
-            return directionSprite("/theme2/pacman.png", PACMAN_ANIMATION_FRAMES);
+            return directionSprite("/Sprite/pacman2.png", PACMAN_ANIMATION_FRAMES);
         }
         if(themeSelector.getTheme_() == 3){
-            return directionSprite("/theme3/pacman.png", PACMAN_ANIMATION_FRAMES);
+            return directionSprite("/Sprite/pacman3.png", PACMAN_ANIMATION_FRAMES);
         }
         if(themeSelector.getTheme_() == 4){
-            return directionSprite("/theme4/pacman.png", PACMAN_ANIMATION_FRAMES);
+            return directionSprite("/Sprite/pacman4.png", PACMAN_ANIMATION_FRAMES);
         }
-        if(themeSelector.getTheme_() == 5){
-            return directionSprite("/theme5/pacman.png", PACMAN_ANIMATION_FRAMES);
-        }
-        else {
             return directionSprite("/sprite/pacman.png", PACMAN_ANIMATION_FRAMES);
         }
 
-    }
+
 
     /**
      * @return The animation of a dying Pac-Man.
@@ -129,36 +125,28 @@ public class PacManSprites extends SpriteStore {
         assert color != null;
 
         if (themeSelector.getTheme_() == 1) {
-            String resource = "/theme1/ghost_" + color.name().toLowerCase()
+            String resource = "/sprite/ghost1_" + color.name().toLowerCase()
                 + ".png";
             return directionSprite(resource, GHOST_ANIMATION_FRAMES);
         }
 
         if (themeSelector.getTheme_() == 2) {
-            String resource = "/theme2/ghost_" + color.name().toLowerCase()
+            String resource = "/sprite/ghost2_" + color.name().toLowerCase()
                 + ".png";
             return directionSprite(resource, GHOST_ANIMATION_FRAMES);
         }
 
         if (themeSelector.getTheme_() == 3) {
-            String resource = "/theme3/ghost_" + color.name().toLowerCase()
+            String resource = "/sprite/ghost3_" + color.name().toLowerCase()
                 + ".png";
             return directionSprite(resource, GHOST_ANIMATION_FRAMES);
         }
 
         if (themeSelector.getTheme_() == 4) {
-            String resource = "/theme4/ghost_" + color.name().toLowerCase()
+            String resource = "/sprite/ghost4_" + color.name().toLowerCase()
                 + ".png";
             return directionSprite(resource, GHOST_ANIMATION_FRAMES);
-        }
-
-        if (themeSelector.getTheme_() == 5) {
-            String resource = "/theme5/ghost_" + color.name().toLowerCase()
-                + ".png";
-            return directionSprite(resource, GHOST_ANIMATION_FRAMES);
-        }
-
-        else {
+        } else {
             String resource = "/sprite/ghost_" + color.name().toLowerCase()
                 + ".png";
             return directionSprite(resource, GHOST_ANIMATION_FRAMES);
@@ -171,25 +159,20 @@ public class PacManSprites extends SpriteStore {
     public Sprite getWallSprite() {
 
         if (themeSelector.getTheme_() == 1) {
-            return loadSprite("/theme1/wall.png");
+            return loadSprite("/sprite/wall1.png");
         }
 
         if (themeSelector.getTheme_() == 2) {
-            return loadSprite("/theme2/wall.png");
+            return loadSprite("/sprite/wall2.png");
         }
 
         if (themeSelector.getTheme_() == 3) {
-            return loadSprite("/theme3/wall.png");
+            return loadSprite("/sprite/wall3.png");
         }
 
         if (themeSelector.getTheme_() == 4) {
-            return loadSprite("/theme4/wall.png");
-        }
-
-        if (themeSelector.getTheme_() == 5) {
-            return loadSprite("/theme5/wall.png");
-        }
-        else {
+            return loadSprite("/sprite/wall4.png");
+        } else {
             return loadSprite("/sprite/wall.png");
         }
     }
@@ -199,21 +182,17 @@ public class PacManSprites extends SpriteStore {
      */
     public Sprite getGroundSprite() {
         if (themeSelector.getTheme_() == 1) {
-            return loadSprite("/theme1/floor.png");
+            return loadSprite("/sprite/floor1.png");
         }
         if (themeSelector.getTheme_() == 2) {
-            return loadSprite("/theme2/floor.png");
+            return loadSprite("/sprite/floor2.png");
         }
         if (themeSelector.getTheme_() == 3) {
-            return loadSprite("/theme3/floor.png");
+            return loadSprite("/sprite/floor3.png");
         }
         if (themeSelector.getTheme_() == 4) {
-            return loadSprite("/theme4/floor.png");
-        }
-        if (themeSelector.getTheme_() == 5) {
-            return loadSprite("/theme5/floor.png");
-        }
-        else {
+            return loadSprite("/sprite/floor4.png");
+        } else {
             return loadSprite("/sprite/floor.png");
         }
     }
@@ -224,21 +203,17 @@ public class PacManSprites extends SpriteStore {
     public Sprite getPelletSprite() {
 
         if (themeSelector.getTheme_() == 1) {
-            return loadSprite("/theme1/pellet.png");
+            return loadSprite("/sprite/choco1.png");
         }
         if (themeSelector.getTheme_() == 2) {
-            return loadSprite("/theme2/cc.png");
+            return loadSprite("/sprite/candy2.png");
         }
         if (themeSelector.getTheme_() == 3) {
-            return loadSprite("/theme3/pellet.png");
+            return loadSprite("/sprite/halo3.png");
         }
         if (themeSelector.getTheme_() == 4) {
-            return loadSprite("/theme4/pellet.png");
-        }
-        if (themeSelector.getTheme_() == 5) {
-            return loadSprite("/theme5/pellet.png");
-        }
-        else {
+            return loadSprite("/sprite/pao4.png");
+        } else {
             return loadSprite("/sprite/pellet.png");
         }
     }

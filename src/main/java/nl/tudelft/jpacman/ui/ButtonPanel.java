@@ -30,17 +30,13 @@ class ButtonPanel extends JPanel {
         assert parent != null;
         setBackground(Color.BLACK);
 
-        ImageIcon startIcon = new ImageIcon("src/main/resources/button/startgame_btn.png");
+        ImageIcon startIcon = new ImageIcon("src/main/resources/button/start_btn.png");
         Image startImg = startIcon.getImage().getScaledInstance(100, 25, Image.SCALE_SMOOTH);
         ImageIcon startBtn = new ImageIcon(startImg);
 
         ImageIcon pauseIcon = new ImageIcon("src/main/resources/button/stop_btn.png");
         Image pauseImg = pauseIcon.getImage().getScaledInstance(100, 25, Image.SCALE_SMOOTH);
         ImageIcon pauseBtn = new ImageIcon(pauseImg);
-
-        ImageIcon HomeIcon = new ImageIcon("src/main/resources/button/home_btn.png");
-        Image HomeImg = HomeIcon.getImage().getScaledInstance(75, 25, Image.SCALE_SMOOTH);
-        ImageIcon HomeBtn = new ImageIcon(HomeImg);
 
         ImageIcon RestartIcon = new ImageIcon("src/main/resources/button/restart_btn.png");
         Image RestartImg = RestartIcon.getImage().getScaledInstance(100, 25, Image.SCALE_SMOOTH);
@@ -62,11 +58,7 @@ class ButtonPanel extends JPanel {
             }
             else if (button.getText().equals("Stop")) {
                 button.setIcon(pauseBtn);
-            }
-            else if (button.getText().equals("Home")) {
-                button.setIcon(HomeBtn);
-            }
-            else if (button.getText().equals("Restart")) {
+            } else if (button.getText().equals("Restart")) {
                 button.setIcon(RestartBtn);
             }
             else if (button.getText().equals("Exit")) {

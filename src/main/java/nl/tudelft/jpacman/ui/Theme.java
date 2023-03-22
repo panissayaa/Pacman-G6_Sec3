@@ -5,18 +5,16 @@ import nl.tudelft.jpacman.Launcher;
 import javax.swing.*;
 import java.awt.*;
 
-public class ThemeSelector extends JFrame {
+public class Theme extends JFrame {
 
     private JButton select;
     private JButton theme1Button;
     private JButton theme2Button;
     private JButton theme3Button;
     private JButton theme4Button;
-    private JButton theme5Button;
     private JButton backButton;
 
-    private MapSelector mapSelector;
-
+    private JButton nextButton;
 
 
     private static int theme_;
@@ -25,16 +23,13 @@ public class ThemeSelector extends JFrame {
     public static int getTheme_() {
         return theme_;
     }
-    private void openMap() {
-        mapSelector = new MapSelector();
-        mapSelector.setVisible(true);
-    }
+
     public static void setTheme_(int theme_) {
-        ThemeSelector.theme_ = theme_;
+        Theme.theme_ = theme_;
     }
 
-    public ThemeSelector(){
-        setTitle("JPacman");
+    public Theme(){
+        setTitle("Pacman");
         setSize(600, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -42,24 +37,20 @@ public class ThemeSelector extends JFrame {
         Image image = backgroundImage.getImage().getScaledInstance(600, 770, Image.SCALE_SMOOTH);
 
         ImageIcon map1Icon = new ImageIcon("src/main/resources/theme/theme_1.png");
-        Image map1Img = map1Icon.getImage().getScaledInstance(370, 227, Image.SCALE_SMOOTH);
+        Image map1Img = map1Icon.getImage().getScaledInstance(200, 162, Image.SCALE_SMOOTH);
         ImageIcon theme1Btn = new ImageIcon(map1Img);
 
         ImageIcon map2Icon = new ImageIcon("src/main/resources/theme/theme_2.png");
-        Image map2Img = map2Icon.getImage().getScaledInstance(370, 227, Image.SCALE_SMOOTH);
+        Image map2Img = map2Icon.getImage().getScaledInstance(200, 162, Image.SCALE_SMOOTH);
         ImageIcon theme2Btn = new ImageIcon(map2Img);
 
         ImageIcon map3Icon = new ImageIcon("src/main/resources/theme/theme_3.png");
-        Image map3Img = map3Icon.getImage().getScaledInstance(370, 227, Image.SCALE_SMOOTH);
+        Image map3Img = map3Icon.getImage().getScaledInstance(200, 161, Image.SCALE_SMOOTH);
         ImageIcon theme3Btn = new ImageIcon(map3Img);
 
         ImageIcon map4Icon = new ImageIcon("src/main/resources/theme/theme_4.png");
-        Image map4Img = map4Icon.getImage().getScaledInstance(370, 227, Image.SCALE_SMOOTH);
+        Image map4Img = map4Icon.getImage().getScaledInstance(200, 162, Image.SCALE_SMOOTH);
         ImageIcon theme4Btn = new ImageIcon(map4Img);
-
-        ImageIcon map5Icon = new ImageIcon("src/main/resources/theme/theme_5.png");
-        Image map5Img = map5Icon.getImage().getScaledInstance(370, 227, Image.SCALE_SMOOTH);
-        ImageIcon theme5Btn = new ImageIcon(map5Img);
 
         ImageIcon realImg = new ImageIcon(image);
         JLabel backgroundLabel = new JLabel(realImg);
@@ -67,6 +58,11 @@ public class ThemeSelector extends JFrame {
         ImageIcon backIcon = new ImageIcon("src/main/resources/button/back_btn.png");
         Image backImg = backIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
         ImageIcon backBtn = new ImageIcon(backImg);
+
+        ImageIcon nextIcon = new ImageIcon("src/main/resources/button/next_btn.png");
+        Image nextImg = nextIcon.getImage().getScaledInstance(200, 50, Image.SCALE_SMOOTH);
+        ImageIcon nextBtn = new ImageIcon(nextImg);
+
 
 
 
@@ -80,7 +76,7 @@ public class ThemeSelector extends JFrame {
         theme1Button.addActionListener(e -> {
             setTheme_(1);
             this.setVisible(false);
-            openMap();
+            new Launcher().launch_theme1();
         });
 
         theme2Button = new JButton("");
@@ -93,7 +89,7 @@ public class ThemeSelector extends JFrame {
         theme2Button.addActionListener(e -> {
             setTheme_(2);
             this.setVisible(false);
-            openMap();
+            new Launcher().launch_theme2();
         });
 
         theme3Button = new JButton("");
@@ -106,7 +102,7 @@ public class ThemeSelector extends JFrame {
         theme3Button.addActionListener(e -> {
             setTheme_(3);
             this.setVisible(false);
-            openMap();
+            new Launcher().launch_theme3();
 
         });
 
@@ -120,20 +116,7 @@ public class ThemeSelector extends JFrame {
         theme4Button.addActionListener(e -> {
             setTheme_(4);
             this.setVisible(false);
-            openMap();
-        });
-
-        theme5Button = new JButton("");
-        theme5Button.setIcon(theme5Btn);
-        theme5Button.setOpaque(false);
-        theme5Button.setContentAreaFilled(false);
-        theme5Button.setBorderPainted(false);
-        theme5Button.setBorder(null);
-
-        theme5Button.addActionListener(e -> {
-            setTheme_(5);
-            this.setVisible(false);
-            openMap();
+            new Launcher().launch_theme4();
         });
 
         backButton = new JButton("");
@@ -145,31 +128,39 @@ public class ThemeSelector extends JFrame {
 
         backButton.addActionListener(e -> {
             this.setVisible(false);
-            new HomePage();
+            new Home();
         });
+
+        nextButton = new JButton("");
+        nextButton.setIcon(nextBtn);
+        nextButton.setOpaque(false);
+        nextButton.setContentAreaFilled(false);
+        nextButton.setBorderPainted(false);
+        nextButton.setBorder(null);
+
+        nextButton.addActionListener(e -> {
+            this.setVisible(false);
+            new Launcher().launch_theme5();
+        });
+
 
         backgroundLabel.add(theme1Button, BorderLayout.CENTER);
         backgroundLabel.add(theme2Button, BorderLayout.CENTER);
         backgroundLabel.add(theme3Button, BorderLayout.CENTER);
         backgroundLabel.add(theme4Button, BorderLayout.CENTER);
-        backgroundLabel.add(theme5Button, BorderLayout.CENTER);
+        backgroundLabel.add(nextButton, BorderLayout.CENTER);
         backgroundLabel.add(backButton, BorderLayout.CENTER);
 
-        theme1Button.setBounds(82, 180, 130, 205);
-        theme2Button.setBounds(236, 180, 130, 205);
-        theme3Button.setBounds(390, 180, 130, 205);
-        theme4Button.setBounds(160, 404, 130, 205);
-        theme5Button.setBounds(315, 404, 130, 205);
-        backButton.setBounds(200, 650, 200, 50);
-
+        theme1Button.setBounds(125, 180, 160, 160);
+        theme2Button.setBounds(325, 180, 160, 160);
+        theme3Button.setBounds(125, 400, 160, 160);
+        theme4Button.setBounds(325, 400, 160, 160);
+        nextButton.setBounds(350, 650, 200, 50);
+        backButton.setBounds(50, 650, 200, 50);
 
         add(backgroundLabel, BorderLayout.CENTER);
     }
-
-
-
     public static void main(String[] args) {
 
     }
 }
-
